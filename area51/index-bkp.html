@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>memora</title>
+	<script src="../scripts/angular.min.js"></script>
+   
+   </head>
+<body>
+    <div ng-app="">  
+        <div id="" class="" contenteditable="true"> 
+			<div id="teste">              
+              <input type="text" ng-model="name" placeholder="Enter name here">
+
+              <p >Hello World! {{name}}</p>
+              
+              <button id="replicar" type="button">Replicar</button>
+              <button id="botao" type="button">selecionado</button>
+            </div>
+            
+            <div id="replicacao">      
+                Nada
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        document.getElementById('replicar').addEventListener('click', function(){     
+            var html_para_replicar = document.getElementById('teste').innerHTML; 
+            console.log(html_para_replicar);          
+            document.getElementById('replicacao').innerHTML += html_para_replicar;
+        });
+
+        document.getElementById('botao').addEventListener('click', function(){                
+            var selObj = window.getSelection();
+            //selObj.baseNode.parentElement.id
+            //console.log(selObj);
+            if(selObj.anchorNode != null){
+                console.log(selObj.toString());
+                console.log(selObj.anchorNode);
+                console.log(selObj.baseNode.parentElement.parentElement.id);
+            }else{
+                alert("primeiramente selecione um texto");
+            }
+        });
+	 
+    </script>
+    
+    <script>
+        /*
+        const secret = document.getElementById('secret');
+        const win = document.getElementById('win');
+
+        // Listen for selection changes
+        document.addEventListener('selectionchange', () => {
+        const selection = window.getSelection();
+        const found = selection.containsNode(secret);
+
+        win.toggleAttribute('hidden', !found);
+        });
+        */
+    </script>
+    
+</body>
+</html>

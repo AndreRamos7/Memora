@@ -1,0 +1,81 @@
+#pagina{
+    display: block;            
+    border: 1px solid #e09e9e;
+    height: 830px;
+    width: 860px;
+    margin: 10px;
+}
+
+#pagina_esquerda{
+    display: block; 
+    float: none;           
+    border: 1px solid #e09e9e;
+    min-height: 90%;
+    height: 1000px;
+    width: 80%;
+    margin: auto;
+    font-size: x-large;
+    zoom: 0.8;
+    padding: 10px;
+}
+
+#pagina_direita{
+    display: none;            
+    border: 1px solid #e09e9e;
+    min-height: 90%;
+    height: auto;   
+    margin: 5px;
+    font-size: small;
+    zoom: 0.8;
+    padding: 10px;
+}
+
+#cabecalho{
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+h5{
+    margin: 0px;
+}
+.bloco{
+    display: block;
+    height: auto;
+}
+#numero_view{
+    display: block;
+    margin: 20px 0px 10px 0px;
+
+}
+#data_view{
+    display: block;
+    margin: 20px 0px 10px 0px;
+    text-align: right;
+}
+#destino_view{ }
+#assunto_view{ }
+
+#corpo{  }
+#redacao_view{
+    margin: 50px 0px 110px 0px;
+    text-align: justify;
+    padding-bottom: 10px;
+    border: none;
+    height: 300px;
+    line-height: 1.6;
+}
+#atenciosamente_view{ 
+    text-align: center;
+    font-size: 15px;    
+    line-height: 1;
+}
+#rodape{    
+    text-align: center;
+    border: 1px solid black;
+    margin-top: 80px !important;
+    margin-bottom: 0px;
+    margin: auto;
+    font-size: smaller;
+    width: 80%;
+
+}

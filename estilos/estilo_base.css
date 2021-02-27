@@ -1,0 +1,115 @@
+.print {
+	/*display:none;*/
+}
+
+.no-print { 
+	/*display:block;*/ 
+}
+body{
+    background-color: orangered;
+}
+#fundo{
+    background-color: white;
+    display: block;
+    height: 1000px;
+    border-radius: 5px;
+
+}
+div.linha{
+    display: block;
+    min-height: 50px;
+}
+.comum{
+    display: block;
+    border: 1px solid black;            
+    margin: 10px;
+    padding: 10px;
+}
+input[type='text'], input[type='number'], select{           
+    margin: 5px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0px;
+}
+input[type='button'], input[type='submit'], button{           
+    display: inline-block;
+    border-radius: 5px;
+    height: 38px;
+    padding: 0 30px;
+    color: #FFF;
+    background-color: #0e3d4b;
+    border-color: #33C3F0;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#formulario{
+    display: block;
+    background-color: yellow;
+    border: 1px solid #e09e9e;
+    height: 600px;
+    width: 30%;
+    margin: 5px;
+    overflow-y: auto;
+    /*zoom: .8;*/
+
+}
+#sobre_o_memorando{  
+    display: block;          
+    background-color: #eaa11a;
+    border: 1px solid #e09e9e; 
+    box-shadow: -2px -2px 8px black;    
+    border-radius: 5px;       
+    margin: 10px;
+    padding: 10px;
+    height: 180px;
+}
+#data{
+    width: 80px;
+}
+#destino, #vinculo, #nome, #cargo, #funcao{
+    width: 300px;
+}
+#ch{
+    width: 150px;
+}
+#numero{
+    height: 30px;
+    width: 70px;
+}
+
+#sobre_o_servidor{  
+    display: block;       
+    background-color: #eaa11a;   
+    border: 1px solid #e09e9e;  
+    box-shadow: -2px -2px 8px black;    
+    border-radius: 5px;            
+    margin: 10px;
+    padding: 10px;
+    height: 500px;
+
+}
+#edicao_e_visualizacao{
+    display: block;            
+    border: 1px solid #e09e9e;
+    height: 99%;
+    width: 880px;
+    margin: 5px;
+}
+#painel_sobre_pagina{
+    display: block;            
+    border: 1px solid #e09e9e;
+    border-radius: 5px;  
+    height: 40px;
+    margin: 10px;
+    padding: 5px 0px 0px 5px;
+}
+
+img#logotipo{
+    width: 50px;
+    height: auto;
+
+}
+.ladoalado{
+    float: left;
+}

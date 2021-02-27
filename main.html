@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>memora</title>
+    <link rel="stylesheet" href="estilos/estilo_base.css">
+    <link rel="stylesheet" href="estilos/estilos_extras.css">
+    <link rel="stylesheet" href="estilos/estilo_documento.css">    
+    <link rel="stylesheet" href="estilos/print.css">
+    
+    <link rel="stylesheet" href="estilos/jquery-ui.css">
+
+    <script src="scripts/angular.min.js"></script>
+
+    <style>
+        .ui-autocomplete {
+          max-height: 150px;
+          overflow-y: auto;
+          /* prevent horizontal scrollbar */
+          overflow-x: hidden;
+        }
+        
+        table {
+            font-size: 1em;
+        }
+
+        .ui-draggable, .ui-droppable {
+            background-position: top;
+        }
+    </style>
+    <script src="scripts/jquery-1.12.4.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+    
+   </head>
+    <body>
+        <div ng-app="myApp" ng-controller="myCtrl"  ng-init="copia='Copiaaaaa'" id="fundo">
+            <form action="javascript:;" id="formulario" class="ladoalado no-print" method="GET"> 
+                <div id="sobre_o_memorando"> 
+                    <div class="linha">
+                        <div class="ladoalado">
+                            <label for="numero"> Nº </label>
+                            <input ng-model="numero" id="numero" type="number" name="numero" autocomplete="off" required>
+                        </div>
+                        <div class="ladoalado">
+                            <label for="data"> Data </label>
+                            <input ng-model="data" id="data" type="text" name="data" autocomplete="off" maxlength="10"  required>
+                        </div>
+                    </div> 
+                    <div class="linha">
+                        <div class="ui-widget">
+                            <label for="destino"> Para: </label><br>
+                            <input ng-model="destino"  id="destino" type="text" name="destino" autocomplete="off" required>
+                        </div>
+                        <div class="">
+                            <label for="assunto"> Assunto </label><br>                            
+                            <select  ng-model="assunto" name="assunto" id="assunto"  required>
+                                <option value="Lotação de Servidor">Lotação de Servidor</option>
+                                <option value="Transferência de Servidor">Transferência de Servidor</option>
+                                <option value="Retificação de Lotação de Servidor">Retificação de Lotação de Servidor</option>
+                            </select>
+                        </div>
+                    </div>    
+                </div>  
+
+                <div id="sobre_o_servidor">  
+                    <div class="bloco">
+                        <label for="nome"> Nome </label><br>
+                        <input  ng-model="nome" id="nome" type="text" name="nome" autocomplete="off"  required>
+                    </div>    
+                    <div class="bloco">
+                        <div class="">
+                            <label for="vinculo">Vínculo </label><br>   
+                            <select  ng-model="vinculo" name="vinculo" id="vinculo" required>
+                                <option value="efetivo(a)">Efetivo(a)</option>
+                                <option value="temporário(a)">Temporário(a)</option>
+                                
+                            </select>
+                        </div>
+                        <div class="ui-widget">
+                            <label for="cargo"> Cargo </label><br>
+                            <input ng-model="cargo" id="cargo" type="text" name="cargo" autocomplete="off" required>
+                        </div>
+                    </div> 
+
+                    <div class="bloco">
+                        <div class=" bloco ui-widget">
+                            <label for="funcao">Função </label><br>
+                            <input ng-model="funcao" id="funcao" type="text" name="funcao" autocomplete="off">
+                        </div>
+                        <div class="bloco">
+                            <label for="ch"> CH </label><br>
+                            <input id="ch" type="number" name="ch" autocomplete="off">
+                        </div>
+                        <div class="bloco">
+                            <label for="carimbo"> Carimbo </label><br>                            
+                            <select  ng-model="carimbo" name="carimbo" id="carimbo" required>
+                                <option value="coordenador">Coordenador(a)</option>
+                                <option value="auxiliar">Auxiliar(a)</option>                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="bloco">                        
+                        <div class="">
+                            <input type="submit" name="" value="Imprimir" ng-click="">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="edicao_e_visualizacao" class="ladoalado" > 
+                
+                <div id="painel_sobre_pagina" class="no-print"> 
+                    <div id="" class="ladoalado">  
+                        <button type="button" ng-click="editToogle()"> {{ editable }} </button>
+                     </div> 
+                    <div id="" class="ladoalado">  
+                        <button type="button" ng-click="imprimir()"> Imprimir </button>
+                     </div>
+                </div>                
+                
+                <!-- ======================== PÁGINAS ========================== --->
+                <div id="pagina" class="print">      
+                    <div id="pagina_esquerda" class="ladoalado" >  
+                        <div>  
+                            <div id="cabecalho">              
+                                <img id="logotipo" src="imagens/logo.png" width="50" height="">
+                                <h5>PREFEITURA MUNICIPAL DE CIDADE</h5>
+                                <h5>SECRETARIA MUNICIPAL DE EDUCAÇÃO</h5>
+                            </div>
+                    
+                            <div id="corpo" class=""> 
+                                <div id='numero_view' class="bloco"> <b> MEM. 0{{numero}}/2021/RH/SEMED/PMC </b></div>
+                                <div id='data_view' class="bloco">    Em: {{data}}</div>
+                                
+                                <div id='destino_view' class="bloco"> Para: {{destino}} </div>
+                                <div id='assunto_view' class="bloco"> Assunto: {{assunto}}   </div>
+                                <div id='redacao_view' class="bloco" contenteditable="true">  
+                                    <div ng-switch on="assunto">
+                                        <div ng-switch-when="Transferência de Servidor">
+                                            <!-- code to render a large video block-->
+                                            <div id='' class="bloco">  
+                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Comunicamos a V. Sª, que o(a) servidor(a) {{vinculo}} <b>{{nome.toUpperCase()}}</b>, cargo {{cargo}} a partir desta data será lotado em outra Unidade de Ensino.
+                                                <br><br><br><br>Atenciosamente,
+                                            </div>
+                                        </div>
+                                        <div ng-switch-when="Lotação de Servidor">
+                                            <!-- code to render a large video block-->
+                                            <div id='' class="bloco">  
+                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Apresentamos a V. Sª, o(a) servidor(a) {{vinculo}} <b>{{nome.toUpperCase()}}</b>, cargo {{cargo}} que a partir desta data será lotado nesta Unidade de Ensino 
+                                                <span ng-if="funcao != undefined"> na função de </span> 
+                                                {{funcao}} 
+                                                <br><br><br><br>Atenciosamente,
+                                            </div>
+                                        </div>
+                                        <div ng-switch-default>
+                                            <div id='' class="bloco">  
+                                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Apresentamos a V. Sª, o(a) servidor(a) {{vinculo}} <b>{{nome.toUpperCase()}}</b>, cargo {{cargo}} que a partir desta data será lotado nesta Unidade de Ensino <span ng-if="funcao != undefined"> na função de </span> {{funcao}} 
+                                                <br><br><br><br>Atenciosamente,
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                  
+                                <div ng-switch on="carimbo">
+                                    <div ng-switch-when="coordenador">
+                                        <div id='atenciosamente_view' class="bloco"> 
+                                            TEste coordenador<br>
+                                            TEste coordenador<br>
+                                            TEste coordenador<br>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="auxiliar">
+                                        <div id='atenciosamente_view' class="bloco"> 
+                                            TEste auxiliar<br>
+                                            TEste auxiliar<br>
+                                            TEste auxiliar<br>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-default>
+                                        <div id='atenciosamente_view' class="bloco"> 
+                                            TEste auxiliar<br>
+                                            TEste auxiliar<br>
+                                            TEste auxiliar<br>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                    
+                            <div id="rodape" class=""> 
+                                <b>SEMED</b>: Avenida Endereço, nº 200, CEP X8XXX-320 Cidade-UF<br>
+                                <b>Email:</b> <a href="mailto:rh.semed@gmail.com">rh.semed@gmail.com</a><br>
+                                <hr>
+                                <b>PMC:</b> Avenida Barão do Rio Branco Nº XXXX - CEP X8XXX-050 Cidade-UF<br>
+                                <b>Fone:</b> 3721-XXXX
+                            </div>
+                        </div>
+                    </div> 
+                    <div id="pagina_direita" class="ladoalado">                          
+                        {{copia}}
+                     </div>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/inicializar.js"></script>
+        <script src="scripts/autocomplete.js"></script>
+        
+    </body>
+</html>

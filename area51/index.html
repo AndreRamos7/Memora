@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>memora</title>
+	<script src="../scripts/angular.min.js"></script>
+   
+   </head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">  
+        <div id="painel"  >              
+            <button id="negritar" type="button">negrito</button>
+        </div>
+        <div id="" class="" contenteditable="true"> 
+            <p>
+                em negrito para negritar....
+            </p>
+        </div>
+        <div id="" class=""> 
+			<div id="teste">              
+              <input type="text" ng-model="name" placeholder="Enter name here">
+
+              <p >Hello World! {{name}}</p>
+              
+              <button id="replicar" type="button">Replicar</button>
+              <button id="botao" type="button">selecionado</button>
+            </div>
+            
+            <div id="replicacao">      
+                Nada
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        document.getElementById('negritar').addEventListener('click', function(){
+            var selObj = window.getSelection();            
+            var tam_selecao = selObj.toString().length;
+
+            var conteudo_completo_da_selecao = selObj.baseNode.parentElement.innerText; 
+
+            var inicio_do_texto = conteudo_completo_da_selecao.substr(0, selObj.anchorOffset);
+            var selecao_do_texto = conteudo_completo_da_selecao.substr(selObj.anchorOffset, tam_selecao);
+            var selecao_txt_negritada  = ["<b>", selecao_do_texto, "</b>"].join('');            
+            var fim_do_texto = conteudo_completo_da_selecao.substr(selObj.anchorOffset + tam_selecao);
+
+            console.log(inicio_do_texto);            
+            console.log(selecao_txt_negritada);
+            console.log(fim_do_texto);          
+            var novo_html = inicio_do_texto + selecao_txt_negritada + fim_do_texto;
+            selObj.baseNode.parentElement.innerHTML = novo_html;
+        });
+
+        document.getElementById('replicar').addEventListener('click', function(){     
+            var html_para_replicar = document.getElementById('teste').innerHTML; 
+            console.log(html_para_replicar);          
+            document.getElementById('replicacao').innerHTML += html_para_replicar;
+        });
+
+        document.getElementById('botao').addEventListener('click', function(){                
+            var selObj = window.getSelection();
+            //selObj.baseNode.parentElement.id
+            //console.log(selObj);
+            if(selObj.anchorNode != null){
+                console.log(selObj);
+                console.log(selObj.toString());
+                console.log(selObj.anchorNode);
+                console.log(selObj.baseNode.parentElement.parentElement.id);
+            }else{
+                alert("primeiramente selecione um texto");
+            }
+        });
+	 
+    </script>
+    
+    <script>
+        /*
+        const secret = document.getElementById('secret');
+        const win = document.getElementById('win');
+
+        // Listen for selection changes
+        document.addEventListener('selectionchange', () => {
+        const selection = window.getSelection();
+        const found = selection.containsNode(secret);
+
+        win.toggleAttribute('hidden', !found);
+        });
+        */
+    </script>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+    </script>
+    
+</body>
+</html>

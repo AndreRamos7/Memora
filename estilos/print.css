@@ -1,0 +1,151 @@
+/*CSS para impressão*/
+@media print {
+    body{
+        background-color: white !important;
+    }
+	body * {		
+        /*background:transparent !important;*/
+        background-color: white !important;
+		color:#000 !important;
+		text-shadow:none !important;
+		filter:none !important;
+		-ms-filter:none !important;
+    }
+    #fundo{
+        background-color: white;
+        display: block;
+        height: auto !important;
+        border-radius: 5px;
+    }
+
+	body {
+		margin: 0;
+		padding: 0;
+		/*line-height: 1.4em;*/
+	}
+	@page {
+        size: landscape;
+		/*margin: 0.3cm !important;*/
+	}
+	.print {
+		display: block !important;
+		/*width: 100% !important;
+		height: 100% !important;*/
+	}
+
+	.no-print { 
+		display:none !important; 
+	}
+	
+	img { 
+		/*width: 400%;
+		height: auto;	*/
+	}
+	nav, footer, button, video, audio, object, embed { 
+		display:none !important; 		
+    }
+
+
+    /* =============================================== ======================================== */
+    #edicao_e_visualizacao{
+        display: block !important;            
+        border: none !important;
+        height: 820px !important;
+        width: 100% !important;
+        margin: 0px !important;
+        align-self: center  !important;
+    }
+    
+    #pagina{       
+        /*width: 95% !important;
+        height: 98% !important;
+        */
+    }
+    #pagina_esquerda, #pagina_direita{
+        width: 45% !important;
+    }
+    #pagina{
+        display: block;  
+        align-content: center;          
+        border: none !important;
+        height: 96% !important;
+        /*margin: 5px  !important;*/
+        margin-left: 30px  !important;
+        width: 800px !important;
+        zoom: 1.5 !important;
+    }
+
+    #pagina_esquerda{
+        display: block;            
+        border: /*1px dashed black*/ none !important;
+        /*border-right: 1px dashed black;*/
+        float: left !important;           
+        min-height: 79%;
+        height:  93% !important;
+        width: 45% !important;
+        margin: 5px !important;
+        font-size: small;
+        zoom: 0.8;
+        padding: 10px;
+    }
+    
+    #pagina_direita{
+        display: block;            
+        border: /*1px dashed black*/ none !important;
+        min-height: 79%;
+        height:  93% !important;
+        width: 45% !important;
+        margin: 5px;
+        margin-left: 35px;
+        font-size: small;
+        zoom: 0.8;
+        padding: 10px;
+    }
+
+    #cabecalho{
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+    h5{
+        margin: 0px;
+    }
+    .bloco{
+        display: block;
+        height: auto;
+    }
+    #numero_view{
+        display: block;
+        margin: 20px 0px 10px 0px;
+    
+    }
+    #data_view{
+        display: block;
+        margin: 20px 0px 10px 0px;
+        text-align: right;
+    }
+    #destino_view{ }
+    #assunto_view{ }
+    #redacao_view{
+        margin: 50px 0px 0px 0px !important;
+        border: none !important;
+    }
+    #atenciosamente_view{
+        text-align: center;
+        font-size: 15px !important;
+
+        text-align: center;
+        font-size: 12px  !important;    
+        line-height: 1  !important;
+     }
+    #corpo{ }
+    #rodape{       
+        text-align: center;
+        border: 1px solid black;
+        margin-top: 10px !important;        
+        margin-bottom: 0px;
+        margin: auto;
+        font-size: smaller;
+        width: 80%;
+    }
+}
